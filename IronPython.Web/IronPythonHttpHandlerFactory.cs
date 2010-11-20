@@ -17,17 +17,17 @@ namespace IronPython.Web
                 throw new HttpException(404, "File not found");
 
             // create ScriptEngine
-            var engine = Python.CreateEngine();
+            var engine = Python.CreateEngine(new Dictionary<string, object> {{"Debug", true}});
 
             // process python code, create class object 
             var scope = engine.ExecuteFile(pathTranslated);
 
             // get the class object
             var className = Path.GetFileNameWithoutExtension(pathTranslated);
-            var clazz = scope.GetVariable(className);
+            var clazz = scope.GetVariable<Func<IHttpHandler>>(className);
 
             // create the instance
-            return (IHttpHandler)engine.Operations.Invoke(clazz);
+            return clazz();
         }
 
         public void ReleaseHandler(IHttpHandler handler)
