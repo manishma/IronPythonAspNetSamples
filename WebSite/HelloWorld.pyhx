@@ -1,0 +1,14 @@
+﻿import clr
+import System
+clr.AddReference('System.Web')
+from System.Web import *
+
+class HelloWorld(IHttpHandler):
+	
+	def ProcessRequest(self, context):
+		response = context.Response
+		response.Write('Hello World!')
+		print
+	
+	def get_IsReusable(self):
+		return False

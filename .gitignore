@@ -1,0 +1,7 @@
+
+IronPython.Web/[Bb]in
+IronPython.Web/[Oo]bj
+*.sln.cache
+_ReSharper*
+*.suo
+*.user
