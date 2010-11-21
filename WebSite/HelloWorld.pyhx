@@ -7,6 +7,7 @@ class HelloWorld(IHttpHandler):
 	
 	def ProcessRequest(self, context):
 		response = context.Response
+		response.ContentType = 'text/plain'
 		response.Write('Hello World!')
 		print
 	

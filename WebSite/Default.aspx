@@ -13,6 +13,7 @@
         IronPython ASP.NET Samples</h1>
     <div>
         <ul>
+            <li><a href="HelloWorld.ashx">Execute ASHX Http Handler</a></li>
             <li><a href="HelloWorld.pyhx">Execute IronPython Http Handler</a></li>
         </ul>
     </div>
