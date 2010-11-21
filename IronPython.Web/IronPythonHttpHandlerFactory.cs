@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Configuration;
 using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
 
@@ -17,7 +18,7 @@ namespace IronPython.Web
                 throw new HttpException(404, "File not found");
 
             // create ScriptEngine
-            var engine = Python.CreateEngine(new Dictionary<string, object> {{"Debug", true}});
+            var engine = Python.CreateEngine(new Dictionary<string, object> {{"Debug", context.IsDebuggingEnabled}});
 
             // process python code, create class object 
             var scope = engine.ExecuteFile(pathTranslated);
